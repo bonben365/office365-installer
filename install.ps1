@@ -113,8 +113,8 @@ $convert = {
    .\setup.exe /configure .\$fileName
    
    # Cleanup
-   Set-Location $env:temp
-   Remove-Item $env:temp\convert -Recurse -Force
+   #Set-Location $env:temp
+   #Remove-Item $env:temp\convert -Recurse -Force
 }
 
    
