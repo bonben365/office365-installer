@@ -20,6 +20,7 @@ $Menu = {
 $install = {
    $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
    Set-Location $env:temp\c2r
+   Invoke-Item $env:temp
    $fileName = "configuration-x$arch.xml"
    New-Item $fileName -ItemType File -Force | Out-Null
    Add-Content $fileName -Value '<Configuration>'
@@ -50,7 +51,7 @@ $install = {
       $Select = Read-Host
 
       if ($select -eq 1) {$arch = '32'}
-      if ($select -eq 1) {$arch = '64'}
+      if ($select -eq 2) {$arch = '64'}
 
    Switch ($Select)
       {
