@@ -91,6 +91,32 @@ $uninstall = {
    Remove-Item $env:temp\uninstall -Recurse -Force
 }
 
+
+$convert = {
+   $null = New-Item -Path $env:temp\convert -ItemType Directory -Force
+   Set-Location $env:temp\convert
+   Invoke-Item $env:temp
+   $fileName = "configuration.xml"
+   New-Item $fileName -ItemType File -Force | Out-Null
+   Add-Content $fileName -Value '<Configuration>'
+   Add-content $fileName -Value "<Add OfficeClientEdition=`"$bit`" MigrateArch=`"TRUE`""
+   Add-Content $fileName -Value '</Add>'
+   Add-Content $fileName -Value '</Configuration>'
+   Write-Host
+   Write-Host ============================================================
+   Write-Host "Processing..................."
+   Write-Host ============================================================
+   Write-Host
+
+   $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
+   $null = Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   .\setup.exe /configure .\$fileName
+   
+   # Cleanup
+   Set-Location $env:temp
+   Remove-Item $env:temp\convert -Recurse -Force
+}
+
    
    Do { 
       cls
@@ -99,6 +125,8 @@ $uninstall = {
 
       if ($select -eq 1) {$arch = '32'}
       if ($select -eq 2) {$arch = '64'}
+      if ($select -eq 3) {$bit = '64'}
+      if ($select -eq 4) {$bit = '32'}
 
    Switch ($Select)
       {
@@ -150,7 +178,8 @@ $uninstall = {
             cls
          }
             
-            
+         3 {Invoke-Command $convert}
+         4 {Invoke-Command $convert}    
          5 {Invoke-Command $uninstall}
 
 
