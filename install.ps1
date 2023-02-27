@@ -57,6 +57,7 @@ $install = {
    # Cleanup
    Set-Location $env:temp
    Remove-Item $env:temp\c2r -Recurse -Force
+   Start-Sleep -Seconds 5
 }
 
 $uninstall = {
@@ -83,11 +84,10 @@ $uninstall = {
    Write-Host ============================================================
    Write-Host
 
-   Start-Sleep -Seconds 5
-
    # Cleanup
    Set-Location $env:temp
    Remove-Item $env:temp\uninstall -Recurse -Force
+   Start-Sleep -Seconds 5
 }
 
 $convert = {
@@ -112,6 +112,7 @@ $convert = {
    # Cleanup
    Set-Location $env:temp
    Remove-Item $env:temp\convert -Recurse -Force
+   Start-Sleep -Seconds 5
 }
   
    Do { 
