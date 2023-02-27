@@ -56,7 +56,7 @@ $install = {
    .\setup.exe /configure .\$fileName
    
    # Cleanup
-   Set-Location "$env:temp"
+   Set-Location $env:temp
    Remove-Item $env:temp\c2r -Recurse -Force
 }
 
@@ -91,11 +91,9 @@ $uninstall = {
    Remove-Item $env:temp\uninstall -Recurse -Force
 }
 
-
 $convert = {
    $null = New-Item -Path $env:temp\convert -ItemType Directory -Force
    Set-Location $env:temp\convert
-   Invoke-Item $env:temp
    $fileName = "configuration.xml"
    New-Item $fileName -ItemType File -Force | Out-Null
    Add-Content $fileName -Value '<Configuration>'
@@ -113,11 +111,10 @@ $convert = {
    .\setup.exe /configure .\$fileName
    
    # Cleanup
-   #Set-Location $env:temp
-   #Remove-Item $env:temp\convert -Recurse -Force
+   Set-Location $env:temp
+   Remove-Item $env:temp\convert -Recurse -Force
 }
-
-   
+  
    Do { 
       cls
       Invoke-Command $Menu
