@@ -35,7 +35,6 @@ $Menu1 = {
 $install = {
    $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
    Set-Location $env:temp\c2r
-   Invoke-Item $env:temp
    $fileName = "configuration-x$arch.xml"
    New-Item $fileName -ItemType File -Force | Out-Null
    Add-Content $fileName -Value '<Configuration>'
