@@ -99,7 +99,7 @@ $convert = {
    $fileName = "configuration.xml"
    New-Item $fileName -ItemType File -Force | Out-Null
    Add-Content $fileName -Value '<Configuration>'
-   Add-content $fileName -Value "<Add OfficeClientEdition=`"$bit`" MigrateArch=`"TRUE`""
+   Add-content $fileName -Value "<Add OfficeClientEdition=`"$bit`" MigrateArch=`"TRUE`">"
    Add-Content $fileName -Value '</Add>'
    Add-Content $fileName -Value '</Configuration>'
    Write-Host
