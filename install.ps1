@@ -17,6 +17,21 @@ $Menu = {
    }
    cls
 
+$Menu1 = {
+   Write-Host " *************************************************"
+   Write-Host " * Select a Microsoft Office 365 Product         *" 
+   Write-Host " *************************************************" 
+   Write-Host 
+   Write-Host " 1. Office 365 Home"
+   Write-Host " 2. Office 365 Personal"
+   Write-Host " 3. Microsoft 365 Apps for Business" 
+   Write-Host " 4. Microsoft 365 Apps for Enterprise" 
+   Write-Host " 5. Go Back"
+   Write-Host 
+   Write-Host " Select an option and press Enter: "  -nonewline
+   } 
+   cls
+
 $install = {
    $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
    Set-Location $env:temp\c2r
@@ -55,23 +70,32 @@ $install = {
 
    Switch ($Select)
       {
-         #1. Office 365 / Microsoft 365
-          1 {
-               $Menu1 = {
-               Write-Host " *************************************************"
-               Write-Host " * Select a Microsoft Office 365 Product         *" 
-               Write-Host " *************************************************" 
-               Write-Host 
-               Write-Host " 1. Office 365 Home"
-               Write-Host " 2. Office 365 Personal"
-               Write-Host " 3. Microsoft 365 Apps for Business" 
-               Write-Host " 4. Microsoft 365 Apps for Enterprise" 
-               Write-Host " 5. Go Back"
-               Write-Host 
-               Write-Host " Select an option and press Enter: "  -nonewline
-               } 
+         #1. Office 365 / Microsoft 365 (32-bit)
+          1 {                       
+               Do { 
+                  cls
+                  Invoke-Command $Menu1
+                  $Select1 = Read-Host
+      
+                  if ($Select1 -eq 1) {$productId = 'O365HomePremRetail'}
+                  if ($Select1 -eq 2) {$productId = 'O365HomePremRetail'}
+                  if ($Select1 -eq 3) {$productId = 'O365BusinessRetail'}
+                  if ($Select1 -eq 4) {$productId = 'O365ProPlusRetail'}
+         
+               Switch ($Select1) {
+                  1 { Invoke-Command $install }
+                  2 { Invoke-Command $install }
+                  3 { Invoke-Command $install }
+                  4 { Invoke-Command $install }
+               }
+               }
+
+               While ($Select1 -ne 5)
                cls
-                        
+            }
+
+         #1. Office 365 / Microsoft 365 (64-bit)
+          2 {                       
             Do { 
                cls
                Invoke-Command $Menu1
@@ -81,17 +105,24 @@ $install = {
                if ($Select1 -eq 2) {$productId = 'O365HomePremRetail'}
                if ($Select1 -eq 3) {$productId = 'O365BusinessRetail'}
                if ($Select1 -eq 4) {$productId = 'O365ProPlusRetail'}
-       
-           Switch ($Select1)
-           {
-                1 { Invoke-Command $install }
-                2 { Invoke-Command $install }
-        
+      
+            Switch ($Select1) {
+               1 { Invoke-Command $install }
+               2 { Invoke-Command $install }
+               3 { Invoke-Command $install }
+               4 { Invoke-Command $install }
             }
-               }
+            }
+
             While ($Select1 -ne 5)
             cls
-            }  
+         }
+            
+            
+
+
+
+
       }
    }
    While ($Select -ne 6)
