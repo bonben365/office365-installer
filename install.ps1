@@ -53,11 +53,12 @@ $install = {
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
    $null = Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
    .\setup.exe /configure .\$fileName
+   Start-Sleep -Seconds 10
    
    # Cleanup
    Set-Location $env:temp
    Remove-Item $env:temp\c2r -Recurse -Force
-   Start-Sleep -Seconds 5
+   Start-Sleep -Seconds 10
 }
 
 $uninstall = {
@@ -83,6 +84,7 @@ $uninstall = {
    Write-Host "Done...."
    Write-Host ============================================================
    Write-Host
+   Start-Sleep -Seconds 10
 
    # Cleanup
    Set-Location $env:temp
@@ -108,11 +110,12 @@ $convert = {
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
    $null = Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
    .\setup.exe /configure .\$fileName
-   
+   Start-Sleep -Seconds 10
+
    # Cleanup
    Set-Location $env:temp
    Remove-Item $env:temp\convert -Recurse -Force
-   Start-Sleep -Seconds 5
+   Start-Sleep -Seconds 10
 }
   
    Do { 
