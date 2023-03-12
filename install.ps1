@@ -51,7 +51,7 @@ $install = {
    Write-Host
 
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\$fileName
    Start-Sleep -Seconds 10
    
@@ -70,7 +70,7 @@ $uninstall = {
    Add-Content $fileName -Value '<Remove All="True"/>'
    Add-Content $fileName -Value '</Configuration>'
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\configuration.xml
 
    Write-Host
@@ -108,7 +108,7 @@ $convert = {
    Write-Host
 
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
-   Invoke-WebRequest -Uri $uri -OutFile 'setup.exe' -ErrorAction:SilentlyContinue
+   (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\$fileName
    Start-Sleep -Seconds 10
 
