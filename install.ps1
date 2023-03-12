@@ -62,8 +62,8 @@ $install = {
 }
 
 $uninstall = {
-   $null = New-Item -Path $env:temp\uninstall -ItemType Directory -Force
-   Set-Location $env:temp\uninstall
+   $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
+   Set-Location $env:temp\c2r
    $fileName = 'configuration.xml'
    $null = New-Item $fileName -ItemType File -Force
    Add-Content $fileName -Value '<Configuration>'
@@ -88,13 +88,13 @@ $uninstall = {
 
    # Cleanup
    Set-Location $env:temp
-   Remove-Item $env:temp\uninstall -Recurse -Force
+   Remove-Item $env:temp\c2r -Recurse -Force
    Start-Sleep -Seconds 5
 }
 
 $convert = {
-   $null = New-Item -Path $env:temp\convert -ItemType Directory -Force
-   Set-Location $env:temp\convert
+   $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
+   Set-Location $env:temp\c2r
    $fileName = "configuration.xml"
    New-Item $fileName -ItemType File -Force | Out-Null
    Add-Content $fileName -Value '<Configuration>'
@@ -114,7 +114,7 @@ $convert = {
 
    # Cleanup
    Set-Location $env:temp
-   Remove-Item $env:temp\convert -Recurse -Force
+   Remove-Item $env:temp\c2r -Recurse -Force
    Start-Sleep -Seconds 10
 }
   
