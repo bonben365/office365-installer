@@ -503,7 +503,6 @@ function Invoke-WPFButton {
 
         "WPFtweaksbutton" {Invoke-WPFtweaksbutton}
 
-        "WPFToggleDarkMode" {Invoke-WPFDarkMode -DarkMoveEnabled $(Get-WinUtilDarkMode)}
         "WPFundoall" {Invoke-WPFundoall}
         "WPFFeatureInstall" {Invoke-WPFFeatureInstall}
         "WPFGetInstalled" {Invoke-WPFGetInstalled -CheckBox "winget"}
@@ -4153,11 +4152,6 @@ $sync.keys | ForEach-Object {
     }
 }
 
-$sync["WPFToggleDarkMode"].Add_Click({    
-  Invoke-WPFDarkMode -DarkMoveEnabled $(Get-WinUtilDarkMode)
-})
-
-$sync["WPFToggleDarkMode"].IsChecked = Get-WinUtilDarkMode
 
 #===========================================================================
 # Setup background config
