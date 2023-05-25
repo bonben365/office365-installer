@@ -859,11 +859,7 @@ $inputXML = '<Window x:Class="WinUtility.MainWindow"
                                 <Button Name="WPFGetInstalled" Content=" Get Installed " Margin="7"/>
                                 <Button Name="WPFclearWinget" Content=" Clear Selection " Margin="7"/>
                             </StackPanel>
-                            <StackPanel Background="#777777" Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" Grid.Column="3" Grid.ColumnSpan="2" Margin="10">
-                                <Label Content="Configuration File:" FontSize="17" VerticalAlignment="Center"/>
-                                <Button Name="WPFimportWinget" Content=" Import " Margin="7"/>
-                                <Button Name="WPFexportWinget" Content=" Export " Margin="7"/>
-                            </StackPanel>
+
                             <StackPanel Background="#777777" SnapsToDevicePixels="True" Grid.Row="1" Grid.Column="0" Margin="10">
                                 <Label Content="Browsers" FontSize="16" Margin="5,0"/>
                                 <CheckBox Name="WPFInstallbrave" Content="Brave" Margin="5,0"/>
