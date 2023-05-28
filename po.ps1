@@ -6,10 +6,8 @@ $Form.Size = New-Object System.Drawing.Size(600,400)
 $Form.StartPosition = "CenterScreen" #loads the window in the center of the screen
 $Form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedToolWindow #modifies the window border
 $Form.Text = "Ping GUI tool" #window description
-$outputBox.Font = New-Object System.Drawing.Font("Verdana",8,[System.Drawing.FontStyle]::Italic)
-$Button.Cursor = [System.Windows.Forms.Cursors]::Hand
-$Button.BackColor = [System.Drawing.Color]::LightGreen
-$Button.Font = New-Object System.Drawing.Font("Verdana",14,[System.Drawing.FontStyle]::Bold)
+
+
   
 $install = {
    $arch='64'   
@@ -55,21 +53,37 @@ catch {$outputBox.text = "`nOperation could not be completed"}
 
 ############################################## Start group boxes
 
+$arch = New-Object System.Windows.Forms.GroupBox
+$arch.Location = New-Object System.Drawing.Size(10,10) 
+$arch.size = New-Object System.Drawing.Size(130,70) 
+$arch.text = "Arch:"
+$Form.Controls.Add($arch) 
+
 $groupBox = New-Object System.Windows.Forms.GroupBox
-$groupBox.Location = New-Object System.Drawing.Size(250,20) 
-$groupBox.size = New-Object System.Drawing.Size(130,100) 
+$groupBox.Location = New-Object System.Drawing.Size(250,60) 
+$groupBox.size = New-Object System.Drawing.Size(130,150) 
 $groupBox.text = "Microsoft 365:"
 $Form.Controls.Add($groupBox) 
 
-$groupBox = New-Object System.Windows.Forms.GroupBox
-$groupBox.Location = New-Object System.Drawing.Size(10,20)
-$groupBox.size = New-Object System.Drawing.Size(130,100) 
-$groupBox.text = "Microsoft 365:"
-$Form.Controls.Add($groupBox) 
+
 
 ############################################## end group boxes
 
 ############################################## Start check boxes
+
+$archcb = New-Object System.Windows.Forms.checkbox
+$archcb.Location = New-Object System.Drawing.Size(10,20)
+$archcb.Size = New-Object System.Drawing.Size(100,20)
+$archcb.Checked = $true
+$archcb.Text = "64 bit"
+$arch.Controls.Add($archcb)
+
+$archcb = New-Object System.Windows.Forms.checkbox
+$archcb.Location = New-Object System.Drawing.Size(10,40)
+$archcb.Size = New-Object System.Drawing.Size(100,20)
+$archcb.Checked = $false
+$archcb.Text = "32 bit"
+$arch.Controls.Add($archcb)
 
 $office1 = New-Object System.Windows.Forms.checkbox
 $office1.Location = New-Object System.Drawing.Size(10,20)
@@ -97,6 +111,8 @@ $groupBox.Controls.Add($procSpeed)
 ############################################## Start buttons
 
 $Button = New-Object System.Windows.Forms.Button 
+$Button.Cursor = [System.Windows.Forms.Cursors]::Hand
+$Button.BackColor = [System.Drawing.Color]::LightGreen
 $Button.Location = New-Object System.Drawing.Size(400,30) 
 $Button.Size = New-Object System.Drawing.Size(110,40) 
 $Button.Text = "Install" 
