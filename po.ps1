@@ -31,7 +31,6 @@ $install = {
    $uri = 'https://github.com/bonben365/office365-installer/raw/main/setup.exe'
    (New-Object Net.WebClient).DownloadFile($uri, "$env:temp\c2r\setup.exe")
    .\setup.exe /configure .\$fileName
-   Start-Sleep -Seconds 10
 }
 ############################################## Start functions
 
