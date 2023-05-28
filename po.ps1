@@ -10,7 +10,7 @@ $Form.Text = "Ping GUI tool" #window description
 
   
 $install = {
-   $arch='64'   
+      
    $null = New-Item -Path $env:temp\c2r -ItemType Directory -Force
    Set-Location $env:temp\c2r
    $fileName = "configuration-x$arch.xml"
@@ -37,7 +37,8 @@ $install = {
 
 function procInformation {
 try {
-
+if ($arch32.Checked -eq $true) {$arch='32'}
+if ($arch64.Checked -eq $true) {$arch='64'}
 if ($office1.Checked -eq $true) {$productId = 'O365HomePremRetail'}
 
 
@@ -71,19 +72,19 @@ $Form.Controls.Add($groupBox)
 
 ############################################## Start check boxes
 
-$archcb = New-Object System.Windows.Forms.checkbox
-$archcb.Location = New-Object System.Drawing.Size(10,20)
-$archcb.Size = New-Object System.Drawing.Size(100,20)
-$archcb.Checked = $true
-$archcb.Text = "64 bit"
-$arch.Controls.Add($archcb)
+$arch64 = New-Object System.Windows.Forms.checkbox
+$arch64.Location = New-Object System.Drawing.Size(10,20)
+$arch64.Size = New-Object System.Drawing.Size(100,20)
+$arch64.Checked = $true
+$arch64.Text = "64 bit"
+$arch.Controls.Add($arch64)
 
-$archcb = New-Object System.Windows.Forms.checkbox
-$archcb.Location = New-Object System.Drawing.Size(10,40)
-$archcb.Size = New-Object System.Drawing.Size(100,20)
-$archcb.Checked = $false
-$archcb.Text = "32 bit"
-$arch.Controls.Add($archcb)
+$arch32 = New-Object System.Windows.Forms.checkbox
+$arch32.Location = New-Object System.Drawing.Size(10,40)
+$arch32.Size = New-Object System.Drawing.Size(100,20)
+$arch32.Checked = $false
+$arch32.Text = "32 bit"
+$arch.Controls.Add($arch32)
 
 $office1 = New-Object System.Windows.Forms.checkbox
 $office1.Location = New-Object System.Drawing.Size(10,20)
